@@ -4,16 +4,18 @@
 #include <list>
 #include <string>
 #include "Entry.h"
+
 using std::string;
+using std::list;
 
 template <typename V>
 class Hash {
 private:
-	typedef Entry<V> eee;
-	list<eee>theHash;
-	int primeSize;
+	list< Entry<V>* > theHash[997];
+	int primeSize; //modify based on anticipated length of key string?
+	int hasher(string k);
 public:
-	Hash<V>(int size);
+	Hash<V>();
 	Entry<V>* getEntry(string k);
 	bool findEntry(string k);
 	void deleteEntry(string k);
